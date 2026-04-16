@@ -1,0 +1,43 @@
+.container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200rpx;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.list {
+  width: 100%;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 32rpx 28rpx;
+  margin-bottom: 16rpx;
+}
+
+.item-name {
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.item-arrow {
+  font-size: 32rpx;
+  color: #cccccc;
+}
