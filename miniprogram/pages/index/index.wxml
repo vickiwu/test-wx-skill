@@ -1,20 +1,50 @@
 <view class="container">
-  <view wx:if="{{isLoading}}" class="loading">
-    <text class="loading-text">加载中...</text>
+  <!-- 空状态 -->
+  <view wx:if="{{goals.length === 0}}" class="empty">
+    <view class="empty-illustration">
+      <view class="circle c1"></view>
+      <view class="circle c2"></view>
+      <view class="circle c3"></view>
+    </view>
+    <text class="empty-title">还没有目标</text>
+    <text class="empty-desc">创建你的第一个打卡目标，开始自律之旅</text>
+    <view class="empty-btn" bind:tap="goCreate">
+      <text class="empty-btn-text">+ 创建目标</text>
+    </view>
   </view>
 
+  <!-- 目标列表 -->
   <block wx:else>
     <view class="list">
-      <view
-        class="list-item"
-        wx:for="{{list}}"
-        wx:key="id"
-        data-id="{{item.id}}"
-        bind:tap="onTapItem"
-      >
-        <text class="item-name">{{item.name}}</text>
-        <text class="item-arrow">›</text>
+      <view class="list-item" wx:for="{{goals}}" wx:key="id">
+        <view class="item-left" data-id="{{item.id}}" bind:tap="goHistory">
+          <view class="item-icon">
+            <view class="icon-dot"></view>
+          </view>
+          <view class="item-info">
+            <text class="item-name">{{item.name}}</text>
+            <view class="item-streak">
+              <text class="streak-num">{{item.streak}}</text>
+              <text class="streak-unit">天连续</text>
+            </view>
+          </view>
+        </view>
+        <view
+          class="check-btn {{item.todayDone ? 'checked' : ''}}"
+          data-id="{{item.id}}"
+          bind:tap="onCheckIn"
+        >
+          <view class="check-inner">
+            <text class="check-icon">{{item.todayDone ? '✓' : '+'}}</text>
+            <text class="check-btn-text">{{item.todayDone ? '已打卡' : '打卡'}}</text>
+          </view>
+        </view>
       </view>
+    </view>
+
+    <!-- 添加目标悬浮按钮 -->
+    <view class="fab" bind:tap="goCreate">
+      <text class="fab-icon">+</text>
     </view>
   </block>
 </view>

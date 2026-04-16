@@ -1,11 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/create/index",
+    "pages/history/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "打卡小助手",
     "navigationBarBackgroundColor": "#ffffff"
   },
   "style": "v2",

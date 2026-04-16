@@ -1,0 +1,64 @@
+<view class="container">
+  <!-- 顶部装饰 -->
+  <view class="header-decoration">
+    <view class="decoration-circle dc1"></view>
+    <view class="decoration-circle dc2"></view>
+    <view class="decoration-circle dc3"></view>
+  </view>
+
+  <!-- 标题区域 -->
+  <view class="header">
+    <text class="title">新建目标</text>
+    <text class="subtitle">设定一个小目标，开始你的自律之旅</text>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="input-section">
+    <view class="input-card">
+      <view class="input-label">
+        <view class="label-dot"></view>
+        <text class="label-text">目标名称</text>
+      </view>
+      <input
+        class="input-field"
+        placeholder="例如：每天背 20 个单词"
+        placeholder-class="input-placeholder"
+        maxlength="20"
+        bind:input="onInputChange"
+        value="{{goalName}}"
+      />
+      <view class="input-count">
+        <text class="count-text">{{goalName.length}}/20</text>
+      </view>
+    </view>
+
+    <!-- 快捷标签 -->
+    <view class="quick-tags">
+      <view class="tag" bind:tap="onQuickSelect" data-name="背单词">
+        <text class="tag-text">背单词</text>
+      </view>
+      <view class="tag" bind:tap="onQuickSelect" data-name="喝水">
+        <text class="tag-text">喝水</text>
+      </view>
+      <view class="tag" bind:tap="onQuickSelect" data-name="运动">
+        <text class="tag-text">运动</text>
+      </view>
+      <view class="tag" bind:tap="onQuickSelect" data-name="读书">
+        <text class="tag-text">读书</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 创建按钮 -->
+  <view class="action-section">
+    <view
+      class="create-btn {{isValid ? '' : 'disabled'}}"
+      bind:tap="onCreate"
+    >
+      <text class="create-btn-text">创建目标</text>
+    </view>
+    <view class="cancel-btn" bind:tap="goBack">
+      <text class="cancel-btn-text">取消</text>
+    </view>
+  </view>
+</view>

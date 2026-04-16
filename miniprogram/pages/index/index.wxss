@@ -1,22 +1,98 @@
 .container {
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #f8f9fa;
   padding: 24rpx;
+  padding-bottom: 120rpx;
   box-sizing: border-box;
 }
 
-.loading {
+/* 空状态 */
+.empty {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding-top: 200rpx;
 }
 
-.loading-text {
-  font-size: 28rpx;
-  color: #999999;
+.empty-illustration {
+  position: relative;
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 48rpx;
 }
 
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.circle.c1 {
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+  top: 20rpx;
+  left: 20rpx;
+  animation: float 3s ease-in-out infinite;
+}
+
+.circle.c2 {
+  width: 60rpx;
+  height: 60rpx;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8f5a 100%);
+  top: 60rpx;
+  right: 20rpx;
+  animation: float 3s ease-in-out infinite 0.5s;
+}
+
+.circle.c3 {
+  width: 40rpx;
+  height: 40rpx;
+  background: linear-gradient(135deg, #ffd93d 0%, #ffe066 100%);
+  bottom: 30rpx;
+  left: 80rpx;
+  animation: float 3s ease-in-out infinite 1s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10rpx);
+  }
+}
+
+.empty-title {
+  font-size: 40rpx;
+  color: #2d3436;
+  font-weight: 700;
+  margin-bottom: 16rpx;
+  letter-spacing: 2rpx;
+}
+
+.empty-desc {
+  font-size: 28rpx;
+  color: #636e72;
+  margin-bottom: 56rpx;
+  text-align: center;
+}
+
+.empty-btn {
+  background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+  border-radius: 50rpx;
+  padding: 28rpx 72rpx;
+  box-shadow: 0 8rpx 24rpx rgba(7, 193, 96, 0.3);
+}
+
+.empty-btn-text {
+  font-size: 32rpx;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* 列表 */
 .list {
   width: 100%;
 }
@@ -27,17 +103,127 @@
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  border-radius: 16rpx;
-  padding: 32rpx 28rpx;
-  margin-bottom: 16rpx;
+  border-radius: 24rpx;
+  padding: 36rpx 32rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+
+.item-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+}
+
+.item-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+}
+
+.icon-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: #07c160;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .item-name {
-  font-size: 30rpx;
-  color: #333333;
+  font-size: 34rpx;
+  color: #2d3436;
+  font-weight: 600;
+  margin-bottom: 8rpx;
 }
 
-.item-arrow {
-  font-size: 32rpx;
-  color: #cccccc;
+.item-streak {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.streak-num {
+  font-size: 36rpx;
+  color: #ff6b35;
+  font-weight: 700;
+  margin-right: 6rpx;
+}
+
+.streak-unit {
+  font-size: 24rpx;
+  color: #b2bec3;
+}
+
+/* 打卡按钮 */
+.check-btn {
+  background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+  border-radius: 50rpx;
+  padding: 20rpx 36rpx;
+  min-width: 140rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(7, 193, 96, 0.25);
+}
+
+.check-btn.checked {
+  background: linear-gradient(135deg, #dfe6e9 0%, #b2bec3 100%);
+  box-shadow: none;
+}
+
+.check-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-icon {
+  font-size: 28rpx;
+  color: #ffffff;
+  margin-right: 8rpx;
+}
+
+.check-btn.checked .check-icon {
+  color: #636e72;
+}
+
+.check-btn-text {
+  font-size: 28rpx;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.check-btn.checked .check-btn-text {
+  color: #636e72;
+}
+
+/* 悬浮按钮 */
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: 60rpx;
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 56rpx;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8f5a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 53, 0.4);
+}
+
+.fab-icon {
+  font-size: 56rpx;
+  color: #ffffff;
+  font-weight: 300;
+  line-height: 1;
 }
